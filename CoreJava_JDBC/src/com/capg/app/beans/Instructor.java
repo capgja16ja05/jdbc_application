@@ -59,11 +59,7 @@ public class Instructor implements Comparable<Instructor>{
 	public void setTrainerLocation(String trainerLocation) {
 		this.trainerLocation = trainerLocation;
 	}
-	@Override
-	public String toString() {
-		return "Instructor [instructorCode=" + instructorCode + ", name=" + name + ", salary=" + salary
-				+ ", jobStartYear=" + jobStartYear + ", email=" + email + ", trainerLocation=" + trainerLocation + "]";
-	}
+	
 	@Override
 	public int compareTo(Instructor o) {
 		
@@ -114,6 +110,10 @@ public class Instructor implements Comparable<Instructor>{
 		return true;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Instructor [instructorCode=" + instructorCode + ", name=" + name + ", salary=" + salary
+				+ ", jobStartYear=" + jobStartYear + ", email=" + email + ", trainerLocation=" + trainerLocation + "]";
+	}
 
 }

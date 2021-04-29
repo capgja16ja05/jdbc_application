@@ -7,36 +7,33 @@ import java.sql.SQLException;
 
 public class DatabaseUtil {
 	
-	Connection con;  // hold database connection
-	PreparedStatement ps;  // holds SQL Query
+	public static Connection con;  // hold database connection
 	
-	public DatabaseUtil()throws ClassNotFoundException,SQLException
+	static
 	{
-		String path = "jdbc:oracle:thin:@localhost:1521:XE";
-		String username = "user1";
-		String password = "user1";
-		
-		Class.forName("oracle.jdbc.driver.OracleDriver");  // Search Oracle Driver class and create instance
-		
-		con = DriverManager.getConnection(path,username,password);
-		System.out.println("---->> Check Connection :- "+con);
-		
-	}
 	
-	/*  Only for Testing ---*/
-	public static void main(String[] args) {
+		try
+		{
+			String path = "jdbc:oracle:thin:@localhost:1521:XE";
+			String username = "user1";
+			String password = "user1";
+			
+			Class.forName("oracle.jdbc.driver.OracleDriver");  // Search Oracle Driver class and create instance
+			con = DriverManager.getConnection(path,username,password);
+			System.out.println("---->> Check Connection :- "+con);
+		}
+		catch(Exception e)
+		{
+			// Spring Logger code , render over server / not on UI
+			System.out.println(e);
+		}
 		
-		try {
-			new DatabaseUtil();
-			
-		} 
-		catch (ClassNotFoundException e) {
-			System.out.println(" Class Not Found "+e);
-		}
-		catch (SQLException e) {
-				System.out.println(" SQLException "+e);
-		}
-			
+		
+		
 	}
+		
+
+
+
 
 }//end class
